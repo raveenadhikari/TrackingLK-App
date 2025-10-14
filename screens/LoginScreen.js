@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import axios from 'axios';
+import { AUTH_URL } from '../config/api';
 
-const AUTH_URL = 'http://192.168.1.101:4000';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post(`${AUTH_URL}/login`, { username, password });
-      alert(res.data.message);
-      navigation.navigate('Explore', { token: res.data.token });
-    } catch (err) {
-      alert(err.response?.data?.message || err.message);
-    }
-  };
+const handleLogin = async () => {
+  try {
+    const res = await axios.post(`${AUTH_URL}/login`, { username, password });
+    alert(res.data.message);
+    // Navigate to tab navigator after successful login
+    navigation.replace('MainTabs', { token: res.data.token });
+  } catch (err) {
+    alert(err.response?.data?.message || err.message);
+  }
+};
+
 
   return (
     <View style={styles.container}>

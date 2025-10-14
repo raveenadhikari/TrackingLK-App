@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-const AUTH_URL = 'http://192.168.1.101:4000';
+import { AUTH_URL } from '../config/api';
 
 export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState('');

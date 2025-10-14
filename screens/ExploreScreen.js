@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Button, SafeAreaView } from 'react-native';
 import axios from 'axios';
+import { EXPO_URL } from '../config/api';
 
-const EXPLORE_URL = 'http://192.168.1.101:5000';
+const EXPLORE_URL = EXPO_URL;
 
 export default function ExploreScreen({ route, navigation }) {
   const { token } = route.params;
